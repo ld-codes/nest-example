@@ -9,8 +9,8 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR…
-      - $(aws ecr get-login — region $AWS_DEFAULT_REGION — no-include-email)
-      - REPOSITORY_URI='159547268021.dkr.ecr.us-east-1.amazonaws.com/fargate-example'
+      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+      - REPOSITORY_URI="159547268021.dkr.ecr.us-east-1.amazonaws.com/fargate-example"
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
       - echo Installing source NPM dependencies...
